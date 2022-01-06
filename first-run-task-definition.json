@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::810942221058:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::946105272283:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -33,11 +33,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 128,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 128,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "810942221058.dkr.ecr.ap-northeast-1.amazonaws.com/jhsong",
+      "image": "946105272283.dkr.ecr.ap-northeast-1.amazonaws.com/jhsong",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -64,7 +64,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:810942221058:task-definition/first-run-task-definition:1",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:946105272283:task-definition/first-run-task-definition:1",
   "family": "first-run-task-definition",
   "requiresAttributes": [
     {
@@ -90,6 +90,12 @@
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
       "targetId": null,
