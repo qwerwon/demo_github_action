@@ -37,11 +37,18 @@ jobs:
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: ${{ secrets.GCP_PROJECT_ID }}
+        
+    - name: setup demo
+      run: |
+        mkdir test
+        touch test/oof.txt
+        touch test/.dot.txt
       
     - name: Copy folder content recursively to remote
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: build/libs
+        local: test
+        #local: build/libs
         remote: test
         host: ${{ secrets.GCP_HOST }}
         username: ${{ secrets.GCP_USERNAME }}
