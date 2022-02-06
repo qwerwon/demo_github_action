@@ -30,7 +30,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew clean build -x test
+      run: pwd && ./gradlew clean build -x test
 
     - name: GCP Github Action
       uses: google-github-actions/setup-gcloud@v0
@@ -39,7 +39,7 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
     
     - name: SCP to destination server
-      run: scp ${{ secrets.SOURCE_PATH }} ${{ secrets.USERNAME }}@${{ secrets.DEST_SERVER }}:${{ secrets.DEST_PATH }}
+      run: ls -al && scp ${{ secrets.SOURCE_PATH }} ${{ secrets.USERNAME }}@${{ secrets.DEST_SERVER }}:${{ secrets.DEST_PATH }}
       
     - name: SSH to destination server
       run: ssh 34.64.71.45
