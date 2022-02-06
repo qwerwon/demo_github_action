@@ -43,6 +43,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.PASSWORD }}
+        #key: ${{ secrets.KEY }}
         source: "build/libs/*.jar"
         target: "test"
