@@ -30,7 +30,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: pwd && ./gradlew clean build -x test
+      run: ./gradlew clean build -x test
 
     - name: GCP Github Action
       uses: google-github-actions/setup-gcloud@v0
@@ -39,17 +39,17 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
     
     - name: SCP to destination server
-      run: ls -al && scp ${{ secrets.SOURCE_PATH }} ${{ secrets.USERNAME }}@${{ secrets.DEST_SERVER }}:${{ secrets.DEST_PATH }}
+      run: scp ${{ secrets.SOURCE_PATH }} ${{ secrets.USERNAME }}@${{ secrets.DEST_SERVER }}:${{ secrets.DEST_PATH }}
       
     - name: SSH to destination server
-      run: ssh 34.64.71.45
+      run: ssh ${{ secrets.DEST_SERVER }}
     
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        key: ${{ secrets.KEY }}
-        source: "build/libs/*.jar"
-        target: "test"
+    #- name: copy file via ssh key
+    #  uses: appleboy/scp-action@master
+    #  with:
+    #    host: ${{ secrets.HOST }}
+    #    username: ${{ secrets.USERNAME }}
+    #    password: ${{ secrets.PASSWORD }}
+    #    key: ${{ secrets.KEY }}
+    #    source: "build/libs/*.jar"
+    #    target: "test"
